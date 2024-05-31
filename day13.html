@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+// communuicate with server = XMLHTTPREQUEST, fetch
+
+// let a  = fetch(`https://fakestoreapi.com/products`)
+// console.log(a);
+// console.log(typeof a);
+
+//---------------
+
+// let a = new Promise((resolve,reject)=>{})
+// console.log(a);
+
+// let a = new Promise((resolve,reject)=>{
+//     // resolve('P1 resolved')
+//     reject('P1 Rejected')
+// })
+// console.log(a);
+//consume a promise
+// a
+// .then((data)=>{console.log(data)})
+// .catch(error=>console.log(error))
+
+// nesting a promise
+
+// setTimeout(()=>{
+//     console.log('YUMMY');
+// },4000)
+
+// let a = 1
+// setInterval(()=>{
+//     console.log('Hello '+ a++);
+// },2000)
+
+// let a = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P1 says car ')
+//     // reject('P1 Rejected')
+//    }, 2000);
+// })
+// console.log(a);
+
+// a.then((data)=>{
+//     console.log(data);
+//     //new promise returned after P1 is resolved
+//     let b = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P2 says carrom ')
+//     // reject('P1 Rejected')
+//    }, 2000);
+// })
+
+//     return b
+
+// }).then(val=>{
+//     console.log(val);
+
+//     let c = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P3 says carrot ')
+//     // reject('P1 Rejected')
+//    }, 2000);
+// })
+
+//     return c
+
+// }).then(x=>console.log(x))
+
+// let a = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P1 says carrot ')
+//     // reject('P1 Rejected')
+//    }, 2000)
+// })
+
+// a.then(data=>console.log(data))
+
+// a.then(data=>{
+// console.log(data);
+
+//     let b = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P2 says carrom ')
+//     // reject('P1 Rejected')
+//    }, 2000)
+// })
+// return b
+// }).then(val=>console.log(val))
+
+
+// a.then(data=>console.log(data))
+
+//----------multiple handlers
+// let a = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     // resolve('P1 resolved ')
+//     reject('P1 Rejected')
+//    }, 3000)
+// })
+
+// let b = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     // resolve('P2 resolved ')
+//     reject('P2 Rejected')
+//    }, 2000)
+// })
+
+// let c = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P3 resolved ')
+//     // reject('P1 Rejected')
+//    }, 4000)
+// })
+
+// // let x =  Promise.all([a,b,c])
+// // x.then(val=>console.log(val))
+
+// // let x =  Promise.allSettled([a,b,c])
+// // x.then(val=>console.log(val))
+
+// // let x =  Promise.race([a,b,c])
+// // x.then(val=>console.log(val))
+
+// let x =  Promise.any([a,b,c])
+// x.then(val=>console.log(val))
+
+//-----------------------------------------
+
+// function one(){
+//     return 'Pen'
+// }
+// console.log(one());
+
+// async function one(){
+//     return 'Pen'
+// }
+// console.log(one());
+
+//------------------------
+
+// let a = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P1 resolved ')
+//     // reject('P1 Rejected')
+//    }, 3000)
+// })
+
+// let b = new Promise((resolve,reject)=>{
+//    setTimeout(() => {
+//     resolve('P2 resolved ')
+//     // reject('P2 Rejected')
+//    }, 6000)
+// })
+
+// async function one(){
+
+// console.log('Start');
+// let x = await a
+// console.log('P1 DONE');
+// let y = await b
+// console.log('P2 Done');
+
+// return [{name:'P1',data:x},{name:'P2',data:y}] 
+
+// }
+// one()
+// .then(val=>console.log(val))
+
+
+
+</script>
+
+</body>
+</html>

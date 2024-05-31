@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        form{
+            border: 2px solid red;
+            width: 50%;
+            height: 40vh;
+padding: 10px;
+border-radius: 25px;
+
+            display: flex;
+flex-direction: column;
+gap: 10px;
+        }
+        form>input{
+      height: 40px;     
+      border-radius: 8px;
+      padding: 2px;
+
+        }
+        .card{
+            border: 4px solid green;
+            /* background-image: linear-gradient(45deg,aqua,yellow,pink); */
+            width: 50%;
+            padding: 10px;
+            border-radius: 25px;
+        }
+        .card>img{
+            border: 1px solid blue;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        .card>h1{
+            /* border: 1px solid red; */
+            width: 30%;
+            margin: 8px auto;
+            padding: 2px;
+        }
+        .card>h4{
+            /* border: 1px solid red; */
+            width: 30%;
+            margin: 8px auto;
+            
+        }
+    </style>
+</head>
+<body>
+<h1>ID CARD GENERATOR</h1>    
+
+<form >
+    <input type="text" placeholder="Full-Name" id="fn">
+    <input type="text" placeholder="Course-Enrolled" id="ce">
+    <input type="text" placeholder="Blood-Group" id="bld">
+    <input type="number" placeholder="Contact" id="contact">
+    <input type="text" placeholder="UPLOAD IMAGE LINK" id="image">
+    <textarea name="" id="address" rows="5" cols="30"></textarea>
+    <label for="">CHOOSE THEME COLOR ::</label>
+    <input type="color" name="" id="theme">
+    <input type="submit" value="Generate" id="gen">
+</form>
+
+<hr>
+
+<section class="card">
+    <img src="" alt="" class="pic">
+    <hr>
+    <h1 class="txtfn">Fullname</h1>
+    <h1 class="txtce">Course Enrolled</h1>
+    <h1 class="contact">Contact</h1>
+    <h1 class="txtbld">BLDGRP</h1>
+    <h4 class="txtaddress">Address</h4>
+</section>
+
+<script>
+    let inpfn =  document.getElementById('fn')
+    let inpce =  document.getElementById('ce')
+    let inpbld =  document.getElementById('bld')
+    let inpcontact =  document.getElementById('contact')
+    let inpimg =  document.getElementById('image')
+    let inpaddress =  document.getElementById('address')
+    let inptheme =  document.getElementById('theme')
+
+// -----------------------
+let txtfn= document.querySelector('.txtfn')
+let txtce= document.querySelector('.txtce')
+
+let txtbld= document.querySelector('.txtbld')
+let txtaddress= document.querySelector('.txtaddress')
+let txtcontact= document.querySelector('.contact')
+let pic= document.querySelector('.pic')
+
+document.querySelector('form').addEventListener('submit',(e)=>{
+    e.preventDefault()
+
+txtfn.textContent = inpfn.value
+txtce.textContent = inpce.value
+txtbld.textContent = inpbld.value
+txtaddress.textContent = inpaddress.value
+txtcontact.textContent = inpcontact.value
+pic.src = inpimg.value
+console.log(inpimg.value);
+
+document.querySelector('.card').style.backgroundColor=inptheme.value
+
+})
+
+
+</script>
+
+</body>
+</html>

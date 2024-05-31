@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- <button onclick="one()">MY BUTTOn</button> -->
+<button >MY BUTTOn</button>
+
+<script>
+
+let btn = document.querySelector('button')
+btn.addEventListener('click',one)
+
+    function one(para){
+        // console.log('GREAT');
+        console.log(para);
+    //    if(  para.target.style.backgroundColor=='' ){
+    //     para.target.style.backgroundColor='aqua'
+    //    }else{
+    //     para.target.style.backgroundColor=''
+    //    }
+// console.log(document.body);
+
+if(document.body.style.backgroundColor==''){
+    document.body.style.backgroundColor='black'
+}else{
+    document.body.style.backgroundColor=''
+}
+
+    }
+</script>
+
+</body>
+</html>

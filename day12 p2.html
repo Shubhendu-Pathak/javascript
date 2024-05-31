@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* background-image: url('https://plus.unsplash.com/premium_photo-1664879492637-276ebb5665bf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8'); */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            transition: all 0.5s linear;
+        }
+        body:before{
+            content: '';
+            background-color: rgba(82, 82, 79, 0.5);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .slider-container{
+            border: 2px solid rgb(62, 194, 247);
+            height: 70vh;
+            width: 70vw;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+        .slide{
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+           
+            z-index: 1;
+
+            transition: all 0.5s linear;
+        }
+        .slide.active{
+            opacity: 1;
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+           
+            z-index: 1;
+
+            transition: all 0.5s linear;
+        }
+        .arrow{
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            background-color: aquamarine;
+            padding: 20px;
+            font-size: 30px;
+            border: 3px solid orange;
+            border-radius: 50%;
+        }
+        .left-arrow{
+            left:10%;
+        }
+        .right-arrow{
+            right: 10%;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="slider-container">
+    <div class="slide active" style="background-image: url('https://plus.unsplash.com/premium_photo-1664879492637-276ebb5665bf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8');"></div>
+    <div class="slide " style="background-image: url('https://images.unsplash.com/photo-1715354500636-45b4ae7fbbaf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8RnpvM3p1T0hONnd8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="slide " style="background-image: url('https://images.unsplash.com/photo-1715594443395-be8c756b0454?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8RnpvM3p1T0hONnd8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="slide " style="background-image: url('https://images.unsplash.com/photo-1624739132722-3da962ed19b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEwfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D');
+    "></div>
+    <!-- arrows -->
+    <button class="arrow left-arrow" id="left">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    <button class="arrow right-arrow" id="right">
+        <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<script>
+
+let body = document.body
+let slides = document.querySelectorAll('.slide')
+console.log(slides);
+let leftbtn = document.getElementById('left')
+let rightbtn = document.getElementById('right')
+
+let activeSlide = 0
+
+rightbtn.addEventListener('click',()=>{
+    activeSlide++
+    if(activeSlide>slides.length){
+        activeSlide=0
+    }
+    setBgToBody()
+    setActiveSlide()
+})
+
+//for automtically change banner
+// setInterval(() => {
+//     activeSlide++
+//     if(activeSlide>slides.length){
+//         activeSlide=0
+//     }
+//     setBgToBody()
+//     setActiveSlide()
+// }, 4000);
+
+leftbtn.addEventListener('click',()=>{
+    activeSlide--
+    if(activeSlide < 0){
+        activeSlide = slides.length-1
+    }
+    setBgToBody()
+    setActiveSlide()
+})
+
+
+setBgToBody()
+
+function setBgToBody(){
+    body.style.backgroundImage = slides[activeSlide].style.backgroundImage
+}
+
+function setActiveSlide(){
+    slides.forEach(ele=>{
+        ele.classList.remove('active')
+    })
+    slides[activeSlide].classList.add('active')
+}
+
+</script>
+
+</body>
+</html>

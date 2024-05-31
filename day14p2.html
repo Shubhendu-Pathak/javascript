@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .country-card{
+            border: 8px solid red;
+            height: 100vh;
+        }
+        .content{
+            display: flex;
+            height: 100%;
+        }
+        .country{
+            border: 2px solid blue;
+            height: 100%;
+            width: 50%;
+            background-color: papayawhip;
+        }
+        .nation-card{
+            border: 5px solid red;
+            height: 80%;
+            width: 80%;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 25px;
+            background-color: aqua;
+            margin: 0 auto;
+        }
+        .nation-card>img{
+            height: 200px;
+            width: 200px;
+        }
+        .neighbour{
+            border: 2px solid rgb(65, 174, 10);
+            height: 100%;
+            width: 50%;
+            background-color: pink;
+        }
+        .neighbour-card{
+            border: 5px solid red;
+            height: 80%;
+            width: 80%;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 25px;
+            background-color: aqua;
+            margin: 0 auto;
+        }
+        .neighbour-card>img{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+  
+
+    <section class="country-card">
+        <button>Get-Country</button>
+     <div class="content">
+        <div class="country">
+            <h2>Country</h2>
+        </div>
+        <div class="neighbour">
+            <h2>Neighbour</h2>
+        </div>
+     </div>
+    </section>
+
+    <script>
+
+document.querySelector('button').addEventListener('click',one)
+
+async function one(){
+    // alert(8787)
+
+let res = await fetch(`https://restcountries.com/v3.1/name/germany`)
+try {
+    let data = await res.json() // JSON data-> js object
+    console.log(data);
+
+let countryData = data[0]
+console.log(countryData);
+
+let html = `
+<div class="nation-card">
+    <img src=${countryData?.flags?.png} alt="">
+    <h2> ${countryData?.name?.official}</h2>
+    <h3>Population = ${countryData?.population}</h3>
+    <h3>Languages </h3>
+    <h3>Currency</h3>
+</div>
+`
+document.querySelector('.country').insertAdjacentHTML('beforeend',html)
+
+//neighbour
+let padosi = countryData?.borders[0]
+console.log(padosi);
+let req2 = await fetch(`https://restcountries.com/v3.1/alpha/${padosi}`)
+let data2 = await req2.json()
+let padosiData = data2[0]
+console.log(padosiData);
+let html2 = `
+<div class="neighbour-card">
+    <img src=${padosiData?.flags?.png} alt="">
+    <h2> ${padosiData?.name?.official}</h2>
+    <h3>Population = ${padosiData?.population}</h3>
+    <h3>Languages </h3>
+    <h3>Currency</h3>
+</div>
+`
+document.querySelector('.neighbour').insertAdjacentHTML('beforeend',html2)
+
+
+} catch (error) {
+    console.log(error);
+}
+
+}
+
+
+
+    </script>
+
+<h1>json-obj->json = JSON.stringify()</h1>
+
+
+</body>
+</html>

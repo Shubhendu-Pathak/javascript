@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .products{
+            /* border: 5px solid red; */
+            height: auto;
+            width: 100%;
+            padding: 15px;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .products > .card{
+            border: 2px solid red;
+            background-color: aqua;
+            text-align: center;
+            height: 350px;
+            width: 350px;
+            line-height: 50px;
+            padding: 10px;
+            border-radius: 25px;
+            margin: 15px;
+        }
+        .products > .card>img{
+            height: 100px;
+            width: 100px;
+            /* border: 8px solid blue; */
+        }
+
+    </style>
+</head>
+<body>
+    
+<!-- product card -->
+<button>GET-Products</button>
+
+<div class="allproducts">
+    <h1>All-Products</h1>
+    <section class="products">
+
+    </section>
+</div>
+
+<script>
+// json---> js object = json.parse
+// js object------>>json= JSON.stringify()
+
+let products = document.querySelector('.products')
+document.querySelector('button').addEventListener('click',one)
+
+function one(){
+    // alert(567)
+
+fetch('https://fakestoreapi.com/products',{method:'GET'})
+.then(res=>res.json())// json-> js object
+.then(data=>{
+    console.log(data)
+
+    data.forEach(ele=>{
+        let html = `
+<div class="card">
+    <img src=${ele?.image} alt="">
+    <h3>TITLE = ${ele?.title}</h3>
+    <p>PRICE = ${ele?.price}</p>
+</div>
+`
+products.insertAdjacentHTML('beforeend',html)
+    })
+
+})
+
+
+}
+
+
+</script>
+
+
+
+</body>
+</html>

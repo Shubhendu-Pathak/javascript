@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<input type="text" id="inp">
+<button>GET QR-CODE</button>
+
+<img src="" alt="" height="500px" width="500px">
+
+<script>
+
+let inp = document.getElementById('inp')
+let image = document.querySelector('img')
+let btn = document.querySelector('button')
+
+btn.addEventListener('click',one)
+
+async function one(){
+
+let inpVal = inp.value
+console.log(inpVal);
+
+let reqQR =  await fetch(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inpVal}`)
+console.log(reqQR);
+
+image.src = reqQR?.url
+
+}
+
+
+</script>
+
+</body>
+</html>

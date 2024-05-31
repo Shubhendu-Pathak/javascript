@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<form >
+    <input type="text" placeholder="FULLNAME" id="fn">
+<input type="number" name="" placeholder="AGE" id="age">
+
+<select name="" id="">
+    <option value="">Select Any ONE</option>
+    <option value="tata1">TATA1</option>
+    <option value="tata2">TATA2</option>
+    <option value="tata3">TATA3</option>
+    <option value="tata4">TATA4</option>
+</select>
+<input type="submit" value="SUBMIT FORM">
+</form>
+
+<script>
+
+let data = {}
+console.log(data);
+
+let form = document.querySelector('form')
+    let x = document.querySelector('select')
+console.log(x);
+
+x.addEventListener('change',(e)=>{
+    let a = e
+    data.car=a.target.value//push data in object data
+
+console.log(a.target.value);
+console.log(data);
+})
+
+
+form.addEventListener('submit',(e)=>{
+e.preventDefault()
+
+data.name = document.getElementById('fn').value
+data.myage = document.getElementById('age').value
+
+console.log(data);
+})
+
+
+
+</script>
+</body>
+</html>
